@@ -1,0 +1,693 @@
+/*! HTML5 Boilerplate v6.0.1 | MIT License | https://html5boilerplate.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Vendor-prefixed and regular ::selection selectors cannot be combined:
+ * https://stackoverflow.com/a/16982510/7133471
+ *
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+
+#main{
+width: 100%;
+height: 100vh;
+/* background-color: yellow; */
+/* border: dashed red; */
+
+/* background-blend-mode: difference; */
+
+
+
+   }
+
+.main1{
+
+    opacity: 1;
+    /* background-color: pink; */
+    /* background-blend-mode: difference; */
+
+    /* background: url(http://farm9.staticflickr.com/8337/8233274850_17c9e09c32_k.jpg); */
+}
+
+.main2 {
+
+    opacity: 1;
+    transition: all ease .2s;
+
+
+}
+
+
+
+.banner {
+    position: absolute;
+    display: block;
+    z-index: 100;
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 900;
+    line-height: 100%;
+    color: white;
+    /* color: blue; */
+    top: 100px;
+    left: 700px;
+    /* transform: perspective(400px) rotateX(-4deg); */
+font-size: 3rem;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    0px 8px 13px rgba(0,0,0,0.2),
+    0px 18px 23px rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,.2)
+
+}
+
+
+
+
+
+
+.fira {
+
+    font-family: "Fira Mono", monospace;
+
+
+}
+
+
+
+
+
+#side {
+
+font-family: "Fira Mono", sans-serif;
+padding-top: 160px;
+position: absolute;
+top: 0px;
+left: 0px;
+/* background-color: rgba(0,0,0,.2); */
+min-width: 20%;
+min-height: 100vh;
+/* border: dashed yellow; */
+display: flex;
+flex-direction: column;
+/* justify-content: center; */
+align-items: center;
+z-index: 100;
+}
+
+
+.shade{
+/* background:rgba(0,0,0,.3); */
+background:rgba(199, 199, 199, 0.4);
+background:rgba(255,255,255, 0.4);
+/* opacity: .4; */
+/* mix-blend-mode: difference; */
+
+
+}
+
+.mix {
+
+    /* isolation: isolate; */
+
+    /* mix-blend-mode: difference; */
+}
+   .button {
+
+/* width: 80%; */
+min-height: 12px;
+margin: 1%;
+/* border: solid whitesmoke; */
+transition: all .1s ease;
+border: solid 3px black;
+width: 200px;
+font-family: "Fira Sans", sans-serif;
+font-weight: 900;
+color: whitesmoke;
+color: black;
+line-height: 99%;
+background-color: rgba(211, 211, 210, 0.605);
+
+font-size: 2rem;
+    /* text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    0px 8px 13px rgba(0,0,0,0.2),
+    0px 18px 23px rgba(0,0,0,0.2); */
+/* 
+
+    text-shadow: 1px 1px 1px #919191,
+    1px 2px 1px #919191,
+    1px 3px 1px #919191,
+    1px 4px 1px #919191,
+    1px 5px 1px #919191,
+    1px 6px 1px #919191,
+    1px 7px 1px #919191,
+    1px 8px 1px #919191,
+    1px 9px 1px #919191,
+    1px 10px 1px #919191,
+1px 18px 6px rgba(16,16,16,0.4),
+1px 22px 10px rgba(16,16,16,0.2),
+1px 25px 35px rgba(16,16,16,0.2),
+1px 30px 60px rgba(16,16,16,0.4); */
+
+
+    /* background-color: rgba(0,0,0,.2) */
+
+
+
+
+   }
+
+.button:hover {
+    /* font-size: 3.8rem; */
+    transform: scale(1.1);
+/* background-color: rgb(196, 190, 0); */
+cursor: pointer;
+background-color: black;
+color: white;
+}
+
+
+#distance{
+
+   
+    font-family: "Fira Code", monospace;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    /* margin: 10px; */
+    height:auto;
+    /* background-color: rgba(0,0,0,.9); */
+    background-color: rgba(255,255,255,.4);
+    /* background-color: red; */
+    min-width: 100%;
+    color: black;
+    font-weight: 900;
+    /* min-height: 10vh; */
+    /* border: dashed yellow; */
+    display: flex;
+    font-size: .5rem;
+    flex-wrap: wrap;
+    /* background-color: pink; */
+    flex-direction: row;
+    /* flex-direction: column; */
+
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    /* align-content: flex-start;
+    justify-content: flex-start; */
+    z-index: 100; 
+}
+
+.right {
+
+/* height: auto; */
+border: dashed .7px #333;
+/* border: solid .5px white; */
+border-radius: 2px;
+margin-top: 8px;
+margin-right: 8px;
+/* padding-left: 8px; */
+/* color: white; */
+/* text-shadow: 1px 1px .2px black; */
+
+}
+
+.white {
+
+    color: white;
+stroke: white;
+border-color: white;
+fill: white;
+
+
+}
+.musher {
+
+    font-weight: 500;
+    font-size: .8rem;
+    background: red;
+}
+
+
+.right2 {
+
+position: absolute;
+top: 30px;
+
+}
+
+#right1 {
+
+/* background-color: red; */
+min-height:  100px;
+width: 100px;
+
+}
+
+#rigth1right {
+
+/* border: dashed red; */
+
+}
+
+.test1{
+
+    /* border: dashed pink;
+    color: blue; */
+    z-index: 100;
+}
+
+#right1Container {
+/* border: dashed yellow; */
+display: flex;
+flex-direction: row;
+}
+
+#right0{
+
+    /* min-height:  90px; */
+    /* border: solid .5px #333; */
+
+}
+
+#rightRunRest {
+    /* border: solid .5px #333; */
+
+}
+
+.drop{
+
+    
+    /* border: dashed green; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 12px;
+max-width: 100px;    
+/* min-height: 100px; */
+/* flex-direction: column; */
+
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    align-content: space-around;
+    align-content: space-between;
+    /* justify-content: space-around; */
+
+}
+
+
+
+
+.rightLabel {
+
+    font-weight: 600;
+    font-size: .8rem;
+    margin-top:0;
+    padding-left: 5px;
+    /* background-color: rgba(142, 155, 1, 0.523); */
+    /* border-top: solid 2px yellow; */
+    /* text-align: center; */
+}
+.rightSide {
+
+    font-family: "Fira Mono", monospace;
+
+
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    min-width: 300px;
+    padding-left: 10px;
+  background-color: rgba(255,255,255,.8);
+  /* background-color:rgba(0,0,0,.5); */
+
+ /* background-color: rgba(0,0,0,.8); */
+    /* max-width: 310px; */
+    min-height: 100vh;
+    /* border: dashed yellow; */
+    /* display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    z-index: 100; 
+
+
+
+
+    /* background-color: #ffffff; */
+    /* background-color: #d8d8d8; */
+    /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cg fill='%23646262' fill-opacity='0.93'%3E%3Cpath fill-rule='evenodd' d='M0 0h4v4H0V0zm4 4h4v4H4V4z'/%3E%3C/g%3E%3C/svg%3E"); */
+     /* mix-blend-mode: difference;  */
+     /* mix-blend-mode: color-burn; */
+ /* mix-blend-mode: exclusion; */
+ /* mix-blend-mode: multiply;
+ mix-blend-mode: hard-light;
+ mix-blend-mode: screen; */
+    }
+
+.ban {
+
+font-size: 3rem;
+font-weight: 800;
+font-family: "Fira Mono", monospace;
+
+transition: 2s ease-out all;
+
+}
+
+.banDescription {
+
+    font-family: "Fira Mono", monospace;
+    font-size: .8rem;
+    font-style: italic;
+    font-weight: 200;
+    
+}
+
+.waffle {
+    margin:1px;
+width: 9px;
+height: 9px;
+/* background-color: rgba(0,0,0, .7); */
+/* background-color: rgb(245, 245, 245); */
+border: 1.4px solid black;
+border: 1.4px solid white;
+background-color: rgba(34, 34, 34, 0.898);
+ /* mix-blend-mode: screen; 
+ mix-blend-mode: screen;
+mix-blend-mode: multiply; */
+/* isolation: isolate; */
+/* mix-blend-mode: color-burn; */
+ /* mix-blend-mode: difference; 
+ mix-blend-mode: exclusion; */
+ /* background-blend-mode: difference; */
+border-radius: 3px;
+/* background-color: rgba(255,255,255,.9) */
+}
+
+.bold {
+
+    font-weight: 900;
+    /* font-size: 2rem; */
+}
+
+
+.speedRect {
+
+    /* fill: red; */
+    /* border-radius: 1px; */
+    stroke:rgb(0,0,0);
+    /* fill:rgba(0,0,0,.3); */
+
+
+}
+
+.runRest {
+
+font-weight: 400;
+font-size: .8rem;
+font-style: italic;
+fill: rgba(0,0,0,.9);
+/* stroke: black; */
+/* stroke-width: 1.4px; */
+/* stroke: blue; */
+}
+
+.timeLineText {
+
+    fill:white;
+    fill: #333;
+    font-size: 8px;
+    text-shadow: 1.5px 1.5px .1px white;
+    font-weight: 800;
+    /* text-shadow: 2px 2px .9px #333; */
+}
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden {
+    display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap; /* 1 */
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    -webkit-clip-path: none;
+    clip-path: none;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+    white-space: inherit;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 1.25dppx),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre {
+        white-space: pre-wrap !important;
+    }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

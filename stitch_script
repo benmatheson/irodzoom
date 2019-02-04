@@ -1,0 +1,74 @@
+"Sentinel-2 L1C from 2017-03-24.tiff" "Sentinel-2 L1C from 2017-03-18.tiff"
+
+
+
+% gdal_merge.py -init 255 -o out.tif in1.tif in2.tif
+
+
+
+\
+
+python 
+
+
+gdal_merge.py --config CHECK_DISK_FREE_SPACE NO -init 255 -o out2.tiff "Sentinel-2 L1C from 2017-03-24.tiff" "Sentinel-2 L1C from 2017-03-18.tiff"
+
+
+
+
+latest:
+
+
+gdal_merge.py --config CHECK_DISK_FREE_SPACE NO -init 255 -co COMPRESS=DEFLATE -o out2.tiff "Sentinel-2 L1C from 2017-03-24.tiff" "Sentinel-2 L1C from 2017-03-18.tiff"
+
+
+gdal_merge.py --config CHECK_DISK_FREE_SPACE NO -co COMPRESS=DEFLATE -ul_lr -18156913.1 9485641.7 -17491976.8 8890916.1 -o out3.tiff s1.tiff s2.tiff
+
+
+
+gdal_merge.py --config CHECK_DISK_FREE_SPACE NO -co COMPRESS=DEFLATE -ul_lr -18156913.1 9485641.7 -17491976.8 8890916.1 -o out4.tiff s2.tiff s1.tiff
+
+
+gdal_merge.py --config CHECK_DISK_FREE_SPACE NO -co COMPRESS=DEFLATE -ul_lr -17161135.9 9355247.8 -16495109.5 8759547.2 -o out5.tiff s01.tiff s02.tiff s03.tiff
+
+
+da new:  -17161135.9,8759547.2 : -16495109.5,9355247.8
+
+da latest:
+
+
+-18664504.8,8650903.1 : -16615721.2,9651906.9
+gdal_merge.py --config CHECK_DISK_FREE_SPACE NO -co COMPRESS=DEFLATE -ul_lr -18664504.8 9651906.9 -16615721.2 8650903.1 -o outTotal.tiff 1.tiff 2.tiff 3.tiff 4.tiff 5.tiff 6.tiff 7.tiff 8.tiff 9.tiff 10.tiff 11.tiff 12.tiff 13.tiff 14.tiff 15.tiff 16.tiff 17.tiff 18.tiff 19.tiff 20.tiff 21.tiff 22.tiff
+
+
+1.tiff 2.tiff 3.tiff 4.tiff 5.tiff 6 tiff 7.tiff 8.tiff 9.tiff 10.tiff 11.tiff 12.tiff 13.tiff 14.tiff 15.tiff 16.tiff 17.tiff 18.tiff 19.tiff 20.tiff 21.tiff 22.tiff
+
+
+
+
+
+
+
+
+
+-ul_lr ulx uly lrx lry
+-18156913.1,8890916.1 : -17491976.8,9485641.7
+
+ -18156913.1 9485641.7 -17491976.8 8890916.1
+
+
+
+
+
+
+Monday
+ gdal_merge.py --config CHECK_DISK_FREE_SPACE NO -co COMPRESS=DEFLATE -ul_lr -18664504.8 9651906.9 -16615721.2 8650903.1 -o outSupplement.tiff 001.tiff 002.tiff 003.tiff 004.tiff 1.tiff 2.tiff 3.tiff 4.tiff 5.tiff 6.tiff 7.tiff 8.tiff 9.tiff 10.tiff 11.tiff 12.tiff 13.tiff 14.tiff 15.tiff 16.tiff 17.tiff 18.tiff 19.tiff 20.tiff 21.tiff 22.tiff
+
+
+tues
+
+ gdal_merge.py --config CHECK_DISK_FREE_SPACE NO -co COMPRESS=DEFLATE -ul_lr -18664504.8 9651906.9 -16615721.2 8650903.1 -o outSupplementTuesday.tiff 00001.tiff 00002.tiff 0001.tiff 0002.tiff 0003.tiff 0004.tiff 0005.tiff 0006.tiff 0007.tiff 0008.tiff 0009.tiff 00010.tiff 00011.tiff 00012.tiff 001.tiff 002.tiff 003.tiff 004.tiff 1.tiff 2.tiff 3.tiff 4.tiff 5.tiff 6.tiff 7.tiff 8.tiff 9.tiff 10.tiff 11.tiff 12.tiff 13.tiff 14.tiff 15.tiff 16.tiff 17.tiff 18.tiff 19.tiff 20.tiff 21.tiff 22.tiff
+
+
+
+ gdal_merge.py --config CHECK_DISK_FREE_SPACE NO -co COMPRESS=DEFLATE -ul_lr -18664504.8 9651906.9 -16615721.2 8650903.1 -o outSupplementTuesday1.tiff  outSupplementTuesday.tiff 0001.tiff 0008.tiff
