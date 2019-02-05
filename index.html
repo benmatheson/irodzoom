@@ -14,7 +14,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700" rel="stylesheet">
 
-    <script src='https://api.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script> -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/0.52.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
 
 
@@ -36,7 +37,7 @@
 
             <div id="rightRunRest" class="right">
 
-                <h2 class="rightLabel">Run & Rest (Median)</h2>
+                <h2 class="rightLabel"><span class="salmon">Run</span> & <span class="rest">Rest</span> (Median)</h2>
 
             </div>
 
@@ -62,7 +63,8 @@
 
 
             <div id="right2" class="right">
-                <h2 class="rightLabel"> Checkpoint Order - Final Place</h2>
+                <h2 class="rightLabel scatterHead"> Checkpoint Order</h2>
+                <h2 class="rightRotate"> Final Order</h2>
 
             </div>
 
@@ -90,8 +92,8 @@
         <div id="ban_description"></div>
 
 
-        <div class="button" id="first">NEXT</div>
-        <div class="button" id="second">PREVIOUS</div>
+        <div class="button first next" id="first">START→</div>
+        <div class="button prev" id="second">←PREVIOUS</div>
 
         <!-- <div class="button" id="third">Start!!</div> -->
 

@@ -31,6 +31,10 @@ sumData.forEach(function(d){
 
 
 function start () {
+
+
+
+
     const yetData = cpData.filter(d=>d.checkName =="Yentna" && d.finalOrder!="NA")
         const skData = cpData.filter(d=>d.checkName =="Skwentna")
         const yetSum = sumData.filter(d=>d.checkName=="Yentna");
@@ -212,7 +216,7 @@ speedLineSvgGAxis.call(speedXaxis)
     .attr("y", 0)
     .attr("height", speedRectHeight)
     .attr("width", 4)
-    .attr("rx", 2)
+    .attr("rx", 4)
     .attr('opacity', .4 )
     .attr("class", "speedRect")
 
@@ -298,7 +302,7 @@ runRestRect1
     .attr("height", speedRectHeight+10)
     .attr("width", d=> runScaleX(d.medianEnRoute))
     .attr("rx", 2)
-    .attr("class", "runRest")
+    .attr("class", "runRest1")
 
  
     
@@ -307,7 +311,7 @@ runRestRect1
     .attr("x", 0)
     .attr("y", 25)
     .attr("height", speedRectHeight+10)
-    .attr("width", d=> restScaleX(d.medianRest))
+    .attr("width", d=> runScaleX(d.medianRest))
     .attr("rx", 2)
     .attr("class", "runRest")
 
@@ -320,7 +324,7 @@ runRestSvgG1.selectAll('text')
     .data(wilSum, d=>d.same)
         .enter()
         .append('text')
-        .text(d=> d.medianEnRoute)
+        .text(d=> `${Math.round(d.medianEnRoute/60)}h ${(d.medianEnRoute%60)}min `)
         .attr("x", d=> runScaleX(d.medianEnRoute)+5)
         .attr("y", 15)
         .attr("class", "runRest")
@@ -331,7 +335,7 @@ runRestSvgG2.selectAll('text')
     .data(wilSum, d=>d.same)
         .enter()
         .append('text')
-        .text(d=> d.medianRest)
+        .text(d=> `${Math.round(d.medianRest/60)}h ${(d.medianRest%60)}min `)
         .attr("x", d=> restScaleX(d.medianRest)+5)
         .attr("y", 35)
         .attr("class", "runRest")
@@ -343,14 +347,15 @@ runRestSvgG2.selectAll('text')
 
 /////////scatter
 
-const scatterSize = 290;
+const scatterSize = 270;
         const scatterYScale = d3.scaleLinear().domain([0,67]).range([scatterSize,0])
         const scatterXScale = d3.scaleLinear().domain([0,67]).range([0,scatterSize])
 
+// .attr("transform", "translate(170,70)")
 
+const scatterSvg = d3.select('#right2').append('svg').attr('height',290).attr("width", 290).attr("transform", "translate(10,0)")
 
-const scatterSvg = d3.select('#right2').append('svg').attr('height',300).attr("width", 300)
-const scatterSvgG = scatterSvg.append('g');
+const scatterSvgG = scatterSvg.append('g')
 const scatterSvgG1 = scatterSvg.append('g');
 
 
@@ -358,16 +363,21 @@ var scatterXaxis = d3.axisRight(scatterXScale).tickSize(0).ticks(5);
 var scatterYaxis = d3.axisBottom(scatterYScale).tickSize(0).ticks(5);
 
 
+// Checkpoint Order
 
 scatterSvgG.call(scatterXaxis)
 .attr("transform", "translate(10,0)")
 .attr("class", "fira")
+.attr("stroke-fill", "none")
+
+scatterSvgG.select("path").remove()
+
 
 
 scatterSvgG1.call(scatterYaxis)
 .attr("class", "fira")
 // .attr("transform", "translate(0,10)")
-
+scatterSvgG1.select("path").remove()
 
 
 
@@ -513,7 +523,7 @@ scatterSvgG.selectAll('circle').data(yetData, d=> d.bib).enter().append('circle'
 document.querySelector("#first").addEventListener("click", function(){updateCp(1)});
 document.querySelector("#second").addEventListener("click", function () {updateCp(-1)});
         
-var cpInd =0;
+var cpInd =-1;
 
 
 function updateCp(val) {
@@ -528,7 +538,11 @@ function updateCp(val) {
 
 function newCp (index) {
 
+    const firstDiv = document.querySelector('div#first')
+    firstDiv.innerText = "NEXT→";
+    firstDiv.classList.remove('first');
 
+    
     console.log("da new hcekpint"+cpInd)
 
 const newCpName = sumData[cpInd].checkName;
@@ -547,12 +561,35 @@ console.log("newsumdata", newSumData)
 console.log("newcpdata", newCpData)
 
 
+cpInd > 10 && cpInd <16 ? yukonFly() : regFly();
+
+
+
+function regFly() {
+
 
     map.flyTo({center: [newSumData[0].lon,newSumData[0].lat],        
         speed: .1, // make the flying slow
     curve: 0, // change the speed at which it zooms out
     pitch: 80,
-    duration: 8000})
+    bearing: 270,
+    zoom:9.7,
+    duration: 10000})
+}
+
+function yukonFly (){
+
+    map.flyTo({center: [newSumData[0].lon,newSumData[0].lat],        
+        speed: .1, // make the flying slow
+    curve: 0, // change the speed at which it zooms out
+    pitch: 80,
+    bearing: 9,
+    zoom:9.7,
+    duration: 10000})
+}
+
+
+
 
 
 
@@ -587,8 +624,18 @@ var waff = dropSvg.selectAll('div').data(waffArray)
 waff.exit().remove()
 
 waff.transition()
-.duration(2000)
-waff.enter().append('div').attr("class", "waffle")
+.duration(1000)
+waff.enter().append('div')
+.attr("class", "waffle")
+
+
+console.log("waff")
+console.log(waff)
+// waff.forEach(function (d){
+
+// d.innerText = '🐕';
+
+// })
 
 //update 24 and 8////
 
@@ -669,7 +716,7 @@ const runNew = runRestSvgG1.selectAll('rect')
     .attr("x", 0)
     .attr("y", 25)
     .attr("height", speedRectHeight+10)
-    .attr("width", d=> restScaleX(d.medianRest))
+    .attr("width", d=> runScaleX(d.medianRest))
     .attr("rx", 2)
    
 
@@ -677,8 +724,8 @@ const runNew = runRestSvgG1.selectAll('rect')
     .data(newSumData, d=>d.same)
         .transition()
         .duration(400)
-        .text(d=> d.medianRest)
-        .attr("x", d=> restScaleX(d.medianRest)+5)
+        .text(d=> `${Math.round(d.medianRest/60)}h ${(d.medianRest%60)}min `)
+        .attr("x", d=> runScaleX(d.medianRest)+5)
     .attr("y", 35)
 
 
@@ -686,7 +733,7 @@ const runNew = runRestSvgG1.selectAll('rect')
     .data(newSumData, d=>d.same)
         .transition()
         .duration(400)
-        .text(d=> d.medianEnRoute)
+        .text(d=> `${Math.round(d.medianEnRoute/60)}h ${(d.medianEnRoute%60)}min `)
         .attr("x", d=> runScaleX(d.medianEnRoute)+5)
         .attr("y", 15)
 
@@ -740,7 +787,7 @@ speedLineSvgG.selectAll('rect').data(newCpData,d=> d.bib)
 .attr("y", 0)
 .attr("height", speedRectHeight)
 .attr("width", 4)
-.attr("rx", 2)
+.attr("rx", 4)
 // .attr('opacity', .2 )
 .attr("class", "speedRect")
 
@@ -856,12 +903,9 @@ container: "main",
 
         // mapbox://styles/benmatheson/cjqkgd4x63duo2smjqmthucmp
          center: [-149.991111, 61.769444],
-         zoom:9.5,
-         bearing: 270,
-         pitch: 80,
-
-
-
+         bearing: -90,
+         zoom: 9.7,
+         pitch: 0,
 
         //  pitch: 0,
     
@@ -1017,7 +1061,7 @@ console.log("the new place"+place)
 place < 24 ?  map.flyTo({center: locations[place],        
         speed: .1, // make the flying slow
        curve: 0, // change the speed at which it zooms out
-       pitch: 80,
+       pitch: 90,
        bearing: 0,
        duration: 8000
    

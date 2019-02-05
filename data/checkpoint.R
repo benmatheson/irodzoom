@@ -117,13 +117,19 @@ data18 <- data18 %>% mutate(rest8 = ifelse(restTime <1440 & restTime >479, 1, 0)
 
 
 write_csv(data18, "data18Complete.csv")
+
+
+##starting here
+
+data18 <- read_csv("data18Complete.csv")
+
 #######summary############
 
 
 # 1238-52
 cpExit <- data18 %>% filter(outtime=="" & checkName == "Nome")
 cpSummary <- data18 %>% filter(outtime!="") %>% group_by(checkName) %>% summarise(rest24 = sum(rest24), rest8 = sum(rest8), medianRest = median(restTime), fastest =min(enrouteTime), totalDogs = sum(dropDogs), averageInDogs = mean(indogs), medianInDogs = median(indogs), medianRest = median(restTime), averageSpeed = mean(speed), medianEnRoute = median(enrouteTime))
-nomeSummary <- data18 %>% filter(checkName == "Nome") %>% group_by(checkName) %>% summarise(rest24 = sum(rest24), medianRest = median(restTime), fastest =min(enrouteTime), totalDogs = sum(dropDogs), averageInDogs = mean(indogs), medianInDogs = median(indogs), medianRest = median(restTime), averageSpeed = mean(speed), medianEnRoute = median(enrouteTime))
+nomeSummary <- data18 %>% filter(checkName == "Nome") %>% group_by(checkName) %>% summarise(rest24 = sum(rest24), rest8 = sum(rest8), medianRest = median(restTime), fastest =min(enrouteTime), totalDogs = sum(dropDogs), averageInDogs = mean(indogs), medianInDogs = median(indogs), medianRest = median(restTime), averageSpeed = mean(speed), medianEnRoute = median(enrouteTime))
 
 cpSummary <- rbind(cpSummary, nomeSummary)
        
@@ -147,6 +153,6 @@ write_csv(cpSummary, "cpSummary.csv")
 
 cpSum <- read_csv("cpSummary.csv")
 
-cpSum[22,] <- c("Willow",0,0,0,0,0,16,16,0,0,0,-150.059750,61.744646)
+# cpSum[22,] <- c("Willow",0,0,0,0,0,16,16,0,0,0,-150.059750,61.744646)
 
 write_csv(cpSum, "cpSummaryW.csv")
