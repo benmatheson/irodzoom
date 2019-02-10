@@ -59,7 +59,7 @@ console.log(wilData)
 
         ban_distance.innerHTML = wilSum[0].Distance;
         const ban_description = document.querySelector('#ban_description')
-        ban_description.innerHTML = "miles into race"
+        ban_description.innerHTML = "miles complete"
         
         ban_distance.classList.add('ban');
         ban_description.classList.add('banDescription');
@@ -72,7 +72,7 @@ console.log(wilData)
 
 const wilDataSort = wilData.sort((a,b)=> a.cpOrder - b.cpOrder).filter(d=>d.cpOrder<6)
 console.log(wilDataSort)
-const peopleSvg = d3.select("#right1Right").append('svg').attr("width", 200).attr("height", 100)
+const peopleSvg = d3.select("#right1Right").append('svg').attr("width", 200).attr("height", 80)
 const peopleSvgG = peopleSvg.append('g')
 
 // peopleSvg.append('text')
@@ -82,8 +82,8 @@ const peopleSvgG = peopleSvg.append('g')
 
 peopleSvgG.selectAll('text').data(wilDataSort, d=>d.bib).enter().append('text')
         .attr("x", 6)
-        .attr("y", (d,i)=> ((i+1)*13)+6)
-        .text((d,i)=>`${i+1}. ${d.musher}`)
+        .attr("y", (d,i)=> ((i+1)*13))
+        .text((d,i)=>`${i+1} ${d.musher}`)
         .attr("class", "musher")
 
 
@@ -238,10 +238,10 @@ const rest24ScaleY = d3.scaleLinear().domain([0,35]).range([100,0])
 
 
 
-var rest24Xaxis = d3.axisRight(rest24ScaleY).tickSize(0).ticks(6);
+var rest24Xaxis = d3.axisRight(rest24ScaleY).tickSize(0).ticks(4);
 
 rest24SvgG.call(rest24Xaxis)
-.attr("transform", "translate(0,10)")
+.attr("transform", "translate(0,-4)")
 .attr("class", "fira")
 
 const rest24Rect = rest24SvgG8.selectAll('rect').data(sumData).enter().append('rect')
@@ -264,6 +264,8 @@ rest24Rect
     .enter()
     .append('rect')
     .attr("id", d=> `_d${d.Distance}`)
+    .attr("transform", "translate(0,4)")
+
 
 
 
@@ -283,7 +285,7 @@ rest8Rect
 
 
 
-const runRestSvg = d3.select("#rightRunRest").append('svg').attr('width',300).attr('height',60)
+const runRestSvg = d3.select("#rightRunRest").append('svg').attr('width',300).attr('height',50)
 const runRestSvgG1 = runRestSvg.append('g')
 const runRestSvgG2 = runRestSvg.append('g')
 
@@ -353,20 +355,20 @@ const scatterSize = 270;
 
 // .attr("transform", "translate(170,70)")
 
-const scatterSvg = d3.select('#right2').append('svg').attr('height',290).attr("width", 290).attr("transform", "translate(10,0)")
+const scatterSvg = d3.select('#right2').append('svg').attr('height',scatterSize).attr("width", scatterSize).attr("transform", "translate(0,0)")
 
 const scatterSvgG = scatterSvg.append('g')
 const scatterSvgG1 = scatterSvg.append('g');
 
 
 var scatterXaxis = d3.axisRight(scatterXScale).tickSize(0).ticks(5);
-var scatterYaxis = d3.axisBottom(scatterYScale).tickSize(0).ticks(5);
+var scatterYaxis = d3.axisTop(scatterYScale).tickSize(0).ticks(5);
 
 
 // Checkpoint Order
 
 scatterSvgG.call(scatterXaxis)
-.attr("transform", "translate(10,0)")
+.attr("transform", "translate(0,0)")
 .attr("class", "fira")
 .attr("stroke-fill", "none")
 
@@ -376,7 +378,7 @@ scatterSvgG.select("path").remove()
 
 scatterSvgG1.call(scatterYaxis)
 .attr("class", "fira")
-// .attr("transform", "translate(0,10)")
+.attr("transform", "translate(10,10)")
 scatterSvgG1.select("path").remove()
 
 
@@ -388,7 +390,7 @@ scatterSvgG.selectAll('circle').data(wilData).enter().append('circle')
 .attr("cy", d=>scatterYScale(d.finalOrder))
 .attr('r', 3)
 .attr("opacity", .7)
-// .attr("class", "white")  
+.attr("class", "circles")  
 .attr("stroke", "#333")
 .attr("stroke-width", 3)
 .attr("fill", "none")
@@ -419,25 +421,25 @@ const histoXScale = d3.scaleTime().domain([new Date (2018, 02, 04), new Date (20
 
 
 
-const histoSvg = d3.select('#right3').append('svg').attr('height', height1).attr("width", width1)
-const histoSvgG = histoSvg.append('g');
+// const histoSvg = d3.select('#right3').append('svg').attr('height', height1).attr("width", width1)
+// const histoSvgG = histoSvg.append('g');
 
 
-const histogram = d3.histogram()
-        .value(d=> d.inTime)
-        .domain(histoXScale.domain())
-        .thresholds(histoXScale.ticks(d3.timeHour))
+// const histogram = d3.histogram()
+//         .value(d=> d.inTime)
+//         .domain(histoXScale.domain())
+//         .thresholds(histoXScale.ticks(d3.timeHour))
 
-const bins = histogram(yetData)
+// const bins = histogram(yetData)
 
-// console.log("binds"+bins)
+// // console.log("binds"+bins)
 
-// console.table(bins)
-        histoSvgG.selectAll('rect').data(bins).enter().append('rect')
-            .attr('x', (d,i)=> i*3.1 )
-            .attr('y', (d,i)=> 200-histoYScale(d.length))
-            .attr('width', 2 )
-            .attr("height", d=> histoYScale(d.length))
+// // console.table(bins)
+//         histoSvgG.selectAll('rect').data(bins).enter().append('rect')
+//             .attr('x', (d,i)=> i*3.1 )
+//             .attr('y', (d,i)=> 200-histoYScale(d.length))
+//             .attr('width', 2 )
+//             .attr("height", d=> histoYScale(d.length))
 
 
 
@@ -447,28 +449,28 @@ const bins = histogram(yetData)
 ///////
 
 /////histo2
-const histo2YScale = d3.scaleLinear().domain([0,20]).range([0,200])
-const histo2XScale = d3.scaleLinear().domain([0,547]).range([0,200])
+// const histo2YScale = d3.scaleLinear().domain([0,20]).range([0,200])
+// const histo2XScale = d3.scaleLinear().domain([0,547]).range([0,200])
 
 
 
-const histo2Svg = d3.select('#right4').append('svg').attr('height', height1).attr("width", width1)
-const histo2SvgG = histo2Svg.append('g');
+// const histo2Svg = d3.select('#right4').append('svg').attr('height', height1).attr("width", width1)
+// const histo2SvgG = histo2Svg.append('g');
 
 
-const histogram2 = d3.histogram()
-        .value(d=> d.restTime)
-        .domain(histo2XScale.domain())
-        .thresholds(histo2XScale.ticks())
+// const histogram2 = d3.histogram()
+//         .value(d=> d.restTime)
+//         .domain(histo2XScale.domain())
+//         .thresholds(histo2XScale.ticks())
 
-const bins2 = histogram(skData)
+// const bins2 = histogram(skData)
 
 
-        histo2SvgG.selectAll('rect').data(bins2).enter().append('rect')
-            .attr('x', (d,i)=> i*5 )
-            .attr('y', (d,i)=> 200-histo2YScale(d.length))
-            .attr('width', 4 )
-            .attr("height", d=> histo2YScale(d.length))
+//         histo2SvgG.selectAll('rect').data(bins2).enter().append('rect')
+//             .attr('x', (d,i)=> i*5 )
+//             .attr('y', (d,i)=> 200-histo2YScale(d.length))
+//             .attr('width', 4 )
+//             .attr("height", d=> histo2YScale(d.length))
 
 
 
@@ -604,7 +606,7 @@ const scat = d3.select('#right2').selectAll('g')
 
    c1.transition()
     .duration(2000)
-    .ease(d3.easeCircle)
+    .ease(d3.easeExp)
 
 //    c1.enter().append('circle')
  
@@ -698,7 +700,7 @@ const runNew = runRestSvgG1.selectAll('rect')
 
     runNew.transition()
     .duration(300)
-    .ease(d3.easeCircle)
+    .ease(d3.easeExp)
 
     .attr("x", 0)
     .attr("y", 0)
@@ -761,15 +763,16 @@ newPeopleSelection.enter().append('text')
     .transition()
     .duration(1000)
      .attr("x", 6)
-     .text((d,i)=>`${i+1}. ${d.musher}`)
-        .attr("y", (d,i)=> ((i+1)*13)+6)
+     .text((d,i)=>`${i+1} ${d.musher}`)
+        .attr("y", (d,i)=> ((i+1)*13))
         .attr("class", "musher")
 
 newPeopleSelection.transition()
+.ease(d3.easeExp)
 .duration(1000)
  .attr("x", 6)
- .text((d,i)=>`${i+1}. ${d.musher}`)
- .attr("y", (d,i)=> ((i+1)*13)+6)
+ .text((d,i)=>`${i+1} ${d.musher}`)
+ .attr("y", (d,i)=> ((i+1)*13))
  .attr("class", "musher")
 
 /////
@@ -781,14 +784,14 @@ newPeopleSelection.transition()
 speedLineSvgG.selectAll('rect').data(newCpData,d=> d.bib)
 .transition()
 .duration(1000)
-.ease(d3.easeCircle)
+.ease(d3.easeExp)
 
 .attr("x", d=> speedScaleX(d.speed))
 .attr("y", 0)
 .attr("height", speedRectHeight)
-.attr("width", 4)
-.attr("rx", 4)
-// .attr('opacity', .2 )
+.attr("width", 6)
+.attr("rx", 2)
+// .attr('opacity', .6 )
 .attr("class", "speedRect")
 
 
@@ -848,13 +851,18 @@ speedLineSvgG.selectAll('rect').data(newCpData,d=> d.bib)
 
 // ban_distance.classList.remove('ban');
 
-ban_distance.innerHTML = newSumData[0].Distance;
+ban_distance.classList.remove('banAni');
+
 const ban_description = document.querySelector('#ban_description')
-ban_description.innerHTML = "miles into race"
+ban_description.innerHTML = "miles complete"
 
+setTimeout(function(){
+    ban_distance.classList.add('banAni')
+    ban_distance.innerHTML = newSumData[0].Distance;
 
-
+},300)
 ban_distance.classList.add('ban');
+
 ban_description.classList.add('banDescription');
 
 ////////
@@ -902,10 +910,10 @@ container: "main",
 
 
         // mapbox://styles/benmatheson/cjqkgd4x63duo2smjqmthucmp
-         center: [-149.991111, 61.769444],
-         bearing: -90,
+         center: [-150.1, 61.769444],
+         bearing: -150,
          zoom: 9.7,
-         pitch: 0,
+         pitch: 30,
 
         //  pitch: 0,
     
