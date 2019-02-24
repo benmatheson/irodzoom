@@ -493,9 +493,63 @@ max-width: 120px;
     margin-top:0;
     margin:0;
     /* padding-left: 5px; */
-    transform: rotate(-90deg) translate(-40px,-145px);
+    transform: rotate(-90deg) translate(-20px,-155px);
 
 }
+
+.enjoy {
+    font-family: 'Playfair Display', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    color: salmon;
+
+     font-size: 3.4rem;
+    /* color: white;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    0px 8px 13px rgba(0,0,0,0.1),
+    0px 18px 23px rgba(0,0,0,0.1); */
+}
+
+#start {
+
+    font-family: 'Fira mono', sans-serif;
+    font-weight: 900;
+    color: #333;
+    background-color: rgba(255,255,255,.5);
+border-radius: 5px;
+display: block;
+position: absolute;
+top: 28%;
+left: 13%;
+
+}
+.header {
+display: block;
+position: absolute;
+top: 10%;
+left: 10%;
+z-index: 100;
+font-family: 'Playfair Display', sans-serif;
+font-weight: 400;
+color: #333;
+/* line-height: 95%; */
+/* background-color: #0000005b; */
+background-color: rgba(255,255,255,.5);
+border-radius: 5px;
+/* background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='whitesmoke' fill-opacity='0.94' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E"); */
+font-size: 2.8rem;
+/* text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+0px 8px 13px rgba(0,0,0,0.1),
+0px 18px 23px rgba(0,0,0,0.1); */
+transition: ease all 1s;
+}
+
+.blank {
+    opacity: 0;
+    transition: ease all .5s;
+transform: scale(1.2);
+}
+
 .rightSide {
 
     font-family: "Fira Mono", monospace;
@@ -646,6 +700,7 @@ transform: translateX(0px);
 
     opacity: .4;
     mix-blend-mode: multiply;
+    cursor: pointer;
 
 }
 .speedRect {
@@ -672,6 +727,28 @@ fill: rgba(0,0,0,.9);
 /* stroke: blue; */
 }
 
+
+#visTool {
+
+    /* border: dashed pink; */
+    position: absolute;
+    /* display: inline-block; */
+    z-index: 100;
+/* color: blue; */
+background-color: rgba(255,255,255, 0.4);
+border-radius: 2px;
+width: 80px;
+margin:auto;
+border: solid lightgray 1px;
+padding: 1%;
+position: absolute;
+font-family: 'Fira Mono', monospace;
+font-size: .4rem;
+ /*left: 100%;*/
+ /*transform: translateX(400%);*/
+/*top: 50%;*/
+
+}
 
 .runRest1 {
 

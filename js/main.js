@@ -350,12 +350,12 @@ runRestSvgG2.selectAll('text')
 /////////scatter
 
 const scatterSize = 270;
-        const scatterYScale = d3.scaleLinear().domain([0,67]).range([scatterSize,0])
-        const scatterXScale = d3.scaleLinear().domain([0,67]).range([0,scatterSize])
+        const scatterYScale = d3.scaleLinear().domain([0,67]).range([0, scatterSize])
+        const scatterXScale = d3.scaleLinear().domain([67,0]).range([scatterSize,0])
 
 // .attr("transform", "translate(170,70)")
 
-const scatterSvg = d3.select('#right2').append('svg').attr('height',scatterSize).attr("width", scatterSize).attr("transform", "translate(0,0)")
+const scatterSvg = d3.select('#right2').append('svg').attr('height',scatterSize).attr("width", scatterSize).attr("transform", "translate(20,-10)")
 
 const scatterSvgG = scatterSvg.append('g')
 const scatterSvgG1 = scatterSvg.append('g');
@@ -368,7 +368,7 @@ var scatterYaxis = d3.axisTop(scatterYScale).tickSize(0).ticks(5);
 // Checkpoint Order
 
 scatterSvgG.call(scatterXaxis)
-.attr("transform", "translate(0,0)")
+.attr("transform", "translate(5,0)")
 .attr("class", "fira")
 .attr("stroke-fill", "none")
 
@@ -384,6 +384,81 @@ scatterSvgG1.select("path").remove()
 
 
 
+////////////function
+
+//tooltip mouseover event handler
+
+
+              var tipMouseover = function(d) {
+                // var visTool = d3.select('div#visTool');
+                var visD32 = d3.select("div#visTool")
+
+                // var html1  = "Musher Name: "+d.musher + "<br/>" 
+                var html10  = `<b>${d.musher}</b> <br/> Place: ${d.finalOrder}`
+                              console.log("WEITn")
+                              console.log(d.musher)
+
+
+                              console.log(d3.event.pageX)
+                              console.log(d3.event.pageY)
+                  // tooltip1.style("left", (d3.event.pageX + 15) + "px")
+                  //     .style("top", (d3.event.pageY - 28) + "px")
+
+
+					// d3.select(this)
+					// .attr("fill", "black")
+					// .transition()
+					// .duration(200)
+					// 	.attr("r",function(d) {return Math.sqrt(d.shipmentCount/300) })
+
+
+                //   tooltip1.innerHTML= html1;
+
+                  	// console.log("d3.select(this).attr("")");
+                  	// console.log(d3.select(this).attr("cx"));
+
+                    //   visTool.innerHTML = html1;
+                      visTool.innerHTML = html10;
+                    //   visD32.innerHTML = html10;
+                    console.log(visTool.innerHTML)
+
+                  	d3.select(this).attr("r", 4);
+
+
+                 var visD3 = d3.select("div#visTool")
+                 	.style("top", ()=>(`${d3.event.pageY+10}px`))
+                 	 .style("left", ()=>(`${d3.event.pageX}px`))
+                 	  .transition()
+                      .duration(100) // ms
+                      .style("opacity", .9)
+
+
+
+              };
+
+              // tooltip mouseout event handler
+              var tipMouseout = function(d) {
+
+              	var visD32 = d3.select("div#visTool")
+                 	.style("top", ()=>(`${d3.event.pageY+10}px`))
+                 	 .style("left", ()=>(`${d3.event.pageX}px`));
+
+                  visD32.transition()
+                      .duration(300) // ms
+                      .style("opacity", 0); 
+                    d3.select(this).attr("r", 3);
+
+
+              }
+
+
+
+
+
+
+
+///////////mousfuciont
+
 
 scatterSvgG.selectAll('circle').data(wilData).enter().append('circle')
 .attr("cx", d=>scatterXScale(d.cpOrder))
@@ -394,14 +469,8 @@ scatterSvgG.selectAll('circle').data(wilData).enter().append('circle')
 .attr("stroke", "#333")
 .attr("stroke-width", 3)
 .attr("fill", "none")
-
-
-
-
-
-
-
-
+.on("mouseover", tipMouseover)
+.on("mouseout", tipMouseout);
 
 
 
@@ -544,7 +613,13 @@ function newCp (index) {
     firstDiv.innerText = "NEXT→";
     firstDiv.classList.remove('first');
 
-    
+    const enjoy = document.querySelector('#header')
+    const start = document.querySelector('#start');
+    console.log(enjoy)
+document.body.contains(enjoy) ? enjoy.classList.add('blank') : console.log('its here')
+    start.classList.add('blank');
+
+
     console.log("da new hcekpint"+cpInd)
 
 const newCpName = sumData[cpInd].checkName;
